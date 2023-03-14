@@ -233,7 +233,9 @@ class _TituloPlayState extends State<TituloPlay> with SingleTickerProviderStateM
     assetsAudioPlayer.currentPosition.listen((duration) {
       audioPlayerModel.current = duration;
     });
-    audioPlayerModel.songDuration = assetsAudioPlayer.current.value!.audio.duration;
+    assetsAudioPlayer.current.listen((playingAudio) {
+      audioPlayerModel.songDuration = playingAudio!.audio.duration;
+    });
   }
   @override
   Widget build(BuildContext context) {
